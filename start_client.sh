@@ -7,7 +7,7 @@ if [ ! -d "venv" ]; then
     python3 -m venv venv
     echo "[setup] Instalando dependencias..."
     echo "[setup] Nota: faster-whisper descargará el modelo la primera vez (~150 MB)..."
-    venv/bin/pip install -r requirements.txt
+    venv/bin/pip install --prefer-binary -r requirements.txt
 fi
 
 PYTHON=venv/bin/python
