@@ -5,13 +5,12 @@ cd "$(dirname "$0")/client"
 if [ ! -d "venv" ]; then
     echo "[setup] Creando entorno virtual del cliente..."
     python3 -m venv venv
-    source venv/bin/activate
     echo "[setup] Instalando dependencias..."
     echo "[setup] Nota: faster-whisper descargará el modelo la primera vez (~150 MB)..."
-    pip install -r requirements.txt
-else
-    source venv/bin/activate
+    venv/bin/pip install -r requirements.txt
 fi
+
+PYTHON=venv/bin/python
 
 if [ ! -f "../.env" ]; then
     echo ""
@@ -28,4 +27,4 @@ echo "  Asegúrate de que el servidor"
 echo "  esté corriendo en otra terminal."
 echo " ===================================="
 echo ""
-python client.py
+$PYTHON client.py

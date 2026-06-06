@@ -5,12 +5,11 @@ cd "$(dirname "$0")/server"
 if [ ! -d "venv" ]; then
     echo "[setup] Creando entorno virtual del servidor..."
     python3 -m venv venv
-    source venv/bin/activate
     echo "[setup] Instalando dependencias..."
-    pip install -r requirements.txt
-else
-    source venv/bin/activate
+    venv/bin/pip install -r requirements.txt
 fi
+
+PYTHON=venv/bin/python
 
 if [ ! -f "../.env" ]; then
     echo ""
@@ -25,4 +24,4 @@ echo " ===================================="
 echo "  Jarvis Server  —  localhost:8000"
 echo " ===================================="
 echo ""
-python server.py
+$PYTHON server.py
